@@ -32,12 +32,12 @@
 #include <stdlib.h>
 #include <fcntl.h>
 
-#if !defined(RS_SERVER) && !defined(RS_COMPATIBILITY_LIB)
+#if !defined(RS_SERVER) && !defined(RS_COMPATIBILITY_LIB) && !defined(ANDROID_GNU_LINUX)
 #include <cutils/properties.h>
 #include "utils/StopWatch.h"
 #endif
 
-#ifdef RS_SERVER
+#if defined(RS_SERVER) || defined(ANDROID_GNU_LINUX)
 // Android exposes gettid(), standard Linux does not
 static pid_t gettid() {
     return syscall(SYS_gettid);

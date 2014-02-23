@@ -156,7 +156,11 @@ LOCAL_SRC_FILES:= \
 	rsType.cpp
 
 LOCAL_SHARED_LIBRARIES += liblog libcutils libutils libEGL libGLESv1_CM libGLESv2 libc++
+ifeq ($(TARGET_OS),gnu_linux)
+LOCAL_SHARED_LIBRARIES += libgui libsync libui
+else
 LOCAL_SHARED_LIBRARIES += libgui libsync libdl libui
+endif
 LOCAL_SHARED_LIBRARIES += libft2 libpng libz
 
 LOCAL_SHARED_LIBRARIES += libbcc libbcinfo libLLVM

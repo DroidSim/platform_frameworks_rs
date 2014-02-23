@@ -34,7 +34,9 @@
     #include <bcc/Renderscript/RSExecutable.h>
     #include <bcc/Renderscript/RSInfo.h>
     #include <bcinfo/MetadataExtractor.h>
+#ifndef ANDROID_GNU_LINUX
     #include <cutils/properties.h>
+#endif
 
     #include <sys/types.h>
     #include <sys/wait.h>
@@ -196,7 +198,7 @@ static void *loadSharedLibrary(const char *cacheDir, const char *resName) {
 
 #else
 static bool is_force_recompile() {
-#ifdef RS_SERVER
+#if defined(RS_SERVER) || defined(ANDROID_GNU_LINUX)
   return false;
 #else
   char buf[PROPERTY_VALUE_MAX];

@@ -23,7 +23,9 @@
 #include <sys/resource.h>
 #include <sched.h>
 
+#ifndef ANDROID_GNU_LINUX
 #include <cutils/properties.h>
+#endif
 
 #include <GLES/gl.h>
 #include <GLES/glext.h>

@@ -39,7 +39,7 @@
 #include <GLES/glext.h>
 #endif
 
-#ifdef RS_SERVER
+#if defined(RS_SERVER) || defined(ANDROID_GNU_LINUX)
 // server requires malloc.h for memalign
 #include <malloc.h>
 #endif

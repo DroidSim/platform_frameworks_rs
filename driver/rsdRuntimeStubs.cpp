@@ -68,7 +68,7 @@ typedef unsigned long long ulong4 __attribute__((ext_vector_type(4)));
 typedef uint8_t uchar;
 typedef uint16_t ushort;
 typedef uint32_t uint;
-#ifndef RS_SERVER
+#if !defined(RS_SERVER) && !defined(ANDROID_GNU_LINUX)
 typedef uint64_t ulong;
 #endif
 
