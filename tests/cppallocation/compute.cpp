@@ -3,6 +3,10 @@
 
 #include "ScriptC_multiply.h"
 
+#ifdef ANDROID_GNU_LINUX
+#include <stdio.h>
+#endif
+
 using namespace android;
 using namespace RSC;
 
