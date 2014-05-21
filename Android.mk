@@ -175,6 +175,10 @@ LOCAL_CPPFLAGS += -fno-exceptions
 
 LOCAL_MODULE_TAGS := optional
 
+ifeq ($(TARGET_OS),gnu_linux)
+LOCAL_LDLIBS := -ldl -lpthread
+endif
+
 include $(BUILD_SHARED_LIBRARY)
 
 # Now build a host version for serialization
