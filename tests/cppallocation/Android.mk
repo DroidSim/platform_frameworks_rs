@@ -13,7 +13,8 @@ LOCAL_SRC_FILES:= \
 ifeq ($(TARGET_OS),gnu_linux)
 LOCAL_SHARED_LIBRARIES := libRSDriver # libRSDriver as the dependency
 LOCAL_STATIC_LIBRARIES := \
-    libRScpp_static
+    libRScpp_static \
+    liblog
 LOCAL_LDLIBS += -lpthread -ldl
 else
 LOCAL_STATIC_LIBRARIES := \
