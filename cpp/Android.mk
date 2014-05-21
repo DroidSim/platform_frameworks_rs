@@ -21,6 +21,13 @@ LOCAL_SRC_FILES := $(rs_cpp_SRC_FILES)
 LOCAL_CLANG := true
 LOCAL_CFLAGS += $(local_cflags_for_rs_cpp)
 
+ifeq ($(TARGET_OS),gnu_linux)
+LOCAL_SHARED_LIBRARIES := \
+	libz \
+	libcutils \
+	libutils \
+	liblog
+else
 LOCAL_SHARED_LIBRARIES := \
 	libz \
 	libcutils \
@@ -28,14 +35,21 @@ LOCAL_SHARED_LIBRARIES := \
 	liblog \
 	libdl \
 	libstlport
+endif
 
 LOCAL_MODULE:= libRScpp
 
 LOCAL_MODULE_TAGS := optional
 
 LOCAL_C_INCLUDES += frameworks/rs
+ifneq ($(TARGET_OS),gnu_linux)
 LOCAL_C_INCLUDES += external/stlport/stlport bionic/ bionic/libstdc++/include
+endif
 LOCAL_C_INCLUDES += $(intermediates)
+
+ifeq ($(TARGET_OS),gnu_linux)
+LOCAL_LDLIBS := -ldl -lpthread
+endif
 
 include $(BUILD_SHARED_LIBRARY)
 
